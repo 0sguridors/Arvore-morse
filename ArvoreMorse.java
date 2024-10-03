@@ -1,11 +1,11 @@
 public class ArvoreMorse {
     private NoMorse raiz;
 
+    // Construtor que constrói a árvore
     public ArvoreMorse() {
         raiz = null;
     }
 
-    // Método para inserir um caractere na árvore
     public void inserir(String codigoMorse, char caractere) {
         raiz = inserirRec(raiz, codigoMorse, caractere);
     }
@@ -26,7 +26,6 @@ public class ArvoreMorse {
         return raiz;
     }
 
-    // Método para decodificar a sequência Morse
     public String decodificar(String codigoMorse) {
         StringBuilder palavraDecodificada = new StringBuilder();
         String[] codigos = codigoMorse.split(" ");
@@ -38,7 +37,7 @@ public class ArvoreMorse {
 
     private char decodificarRec(NoMorse raiz, String codigoMorse) {
         if (raiz == null) {
-            return '?'; // Caractere desconhecido
+            return '?';
         }
         if (codigoMorse.length() == 0) {
             return raiz.caractere;
@@ -51,23 +50,28 @@ public class ArvoreMorse {
         }
     }
 
+
     public void imprimirArvore() {
         imprimirArvoreRec(raiz, "", true);
     }
 
-    private void imprimirArvoreRec(NoMorse no, String indent, boolean ultimo) {
+    private void imprimirArvoreRec(NoMorse no, String prefixo, boolean ehUltimo) {
         if (no != null) {
-            System.out.print(indent);
-            if (ultimo) {
-                System.out.print("R---- ");
-                indent += "   ";
+       
+            System.out.print(prefixo);
+
+            if (ehUltimo) {
+                System.out.print("└── ");
+                prefixo += "    ";
             } else {
-                System.out.print("L---- ");
-                indent += "|  ";
+                System.out.print("├── ");
+                prefixo += "|   ";
             }
+
             System.out.println(no.caractere);
-            imprimirArvoreRec(no.esquerda, indent, false);
-            imprimirArvoreRec(no.direita, indent, true);
+
+            imprimirArvoreRec(no.esquerda, prefixo, false);
+            imprimirArvoreRec(no.direita, prefixo, true);   
         }
     }
 }
