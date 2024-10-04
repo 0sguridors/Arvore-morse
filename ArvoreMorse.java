@@ -1,7 +1,6 @@
 public class ArvoreMorse {
     private NoMorse raiz;
 
-    // Construtor que constrói a árvore
     public ArvoreMorse() {
         raiz = null;
     }
