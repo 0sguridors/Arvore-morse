@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class ArvoreCodigoMorse {
     public static void main(String[] args) {
         ArvoreMorse arvoreMorse = new ArvoreMorse();
+        
         arvoreMorse.inserir(".-", 'A');
         arvoreMorse.inserir("-...", 'B');
         arvoreMorse.inserir("-.-.", 'C');
@@ -39,7 +40,6 @@ public class ArvoreCodigoMorse {
 
         System.out.println("\nÁrvore Morse:");
         arvoreMorse.imprimirArvore();
-
         scanner.close();
     }
 }
